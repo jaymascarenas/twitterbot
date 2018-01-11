@@ -40,7 +40,7 @@ function tweetIt() {
     if (err) {
       console.log("Something went wrong " + err);
     } else {
-      console.log(data);
+      console.log("This worked");
     }
   }
 } */
@@ -59,7 +59,7 @@ function tweetIt(txt) {
     if (err) {
       console.log("Something went wrong " + err);
     } else {
-      console.log(data);
+      console.log("This worked");
     }
   }
 }
@@ -74,4 +74,49 @@ function followed(eventMsg) {
   let name = eventMsg.source.name;
   let screenName = eventMsg.source.screen_name;
   tweetIt(`.@ ${screenName} do you like tacos?`);
+} */
+
+/* ------------------------------------- */
+
+/* // for tweeting a thank you to people who mention me in their tweet 
+function tweetIt(txt) {
+  let tweet = {
+    status: txt
+  };
+
+  T.post("statuses/update", tweet, tweeted);
+
+  function tweeted(err, data, response) {
+    if (err) {
+      console.log("Something went wrong " + err);
+    } else {
+      console.log("This worked");
+    }
+  }
+}
+
+// Setting up a user stream
+let stream = T.stream("user");
+
+// Anytime someone follows me
+stream.on("follow", tweetEvent);
+
+function tweetEvent(eventMsg) {
+
+  // this writes a file to your server with tweet JSON
+  let fs = require("fs");
+  let json = JSON.stringify(eventMsg, null, 2);
+  fs.writeFile("tweet.json", json);
+
+  // pulls data from JSON object in tweet.json
+  let replyTo = eventMsg.in_reply_to_screen_name;
+  let text = eventMsg.text;
+  let from = eventMsg.user.screen_name;
+
+  console.log(`${replyTo} ${from}`);
+
+  if(replyTo === 'yourtwitterscreenname') {
+    let newTweet = `@ ${from} thank you for tweeting me!`;
+    tweetIt(newTweet);
+  }
 } */
