@@ -47,7 +47,7 @@ function tweetIt() {
 
 /* ------------------------------------- */
 
-/* // for replying to new followers from T.stream
+// for replying to new followers from T.stream
 function tweetIt(txt) {
   let tweet = {
     status: txt
@@ -73,8 +73,8 @@ stream.on("follow", followed);
 function followed(eventMsg) {
   let name = eventMsg.source.name;
   let screenName = eventMsg.source.screen_name;
-  tweetIt(`.@ ${screenName} do you like tacos?`);
-} */
+  tweetIt(`@ ${screenName} Hey! Thanks for the follow!`);
+}
 
 /* ------------------------------------- */
 
